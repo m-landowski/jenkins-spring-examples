@@ -7,21 +7,21 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
-                sh "mvn clean compile"
-                }
-                        }
-                stage('Test') {
-                 steps {
-                  sh "mvn test"
-                                            }
-                                                    }
-                                                 stage('Deploy') {
-                                                            steps {
-                                                                sh "mvn clean heroku:deploy"
-                                                                }
-                                                                        }
+       stage('Build') {
+          steps {
+              sh "mvn clean compile"
+              }
         }
+               stage('Test') {
+                  steps {
+                      sh "mvn test"
+                      }
+                }
+             stage('Build') {
+                steps {
+                    sh "mvn heroku:deploy"
+                    }
+              }
+
     }
 }
